@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2024 雲南家族慢旅計畫</title>
+    <title>2026 雲南家族慢旅計畫</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -11,23 +11,24 @@
         body {
             font-family: 'Noto Sans TC', sans-serif;
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
         .hero-section {
             background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://ak-d.tripcdn.com/images/0355212000m6ajzgj58B0_Z_1000_0.jpg?proc=resize/m_z,w_1000;crop/m_c,w_1000,h_1000,x_0,y_0,DD72');
             background-size: cover;
             background-position: center;
         }
-        /* 手機端圖片高度調整 */
         .itinerary-image {
-            height: 280px;
+            aspect-ratio: 16 / 10;
             object-fit: cover;
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             width: 100%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border: 4px solid white;
         }
         @media (min-width: 768px) {
             .itinerary-image {
+                aspect-ratio: auto;
                 height: 500px;
                 border-radius: 3rem;
                 border: 10px solid white;
@@ -37,8 +38,10 @@
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            border-radius: 1rem;
+        }
+        @media (min-width: 768px) {
+            .img-card { border-radius: 2rem; }
         }
         .img-card img {
             transition: transform 0.8s ease;
@@ -55,9 +58,9 @@
 </head>
 <body class="bg-slate-50 text-slate-900 leading-relaxed overflow-x-hidden">
 
-    <!-- 頂部操作列 -->
+    <!-- 頂部操作列 (電腦版顯示) -->
     <div class="hidden md:flex fixed top-6 right-6 z-[100] gap-3">
-        <button onclick="window.print()" class="px-6 py-3 rounded-full bg-white/80 backdrop-blur-md shadow-lg border border-slate-200 text-slate-700 font-bold flex items-center gap-2 hover:bg-white transition active:scale-95">
+        <button onclick="window.print()" class="px-6 py-3 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-slate-200 text-slate-700 font-bold flex items-center gap-2 hover:bg-white transition active:scale-95">
             <i data-lucide="file-text" class="w-4 h-4"></i> 列印 / 轉存 PDF
         </button>
     </div>
@@ -65,14 +68,14 @@
     <!-- 英雄區塊 -->
     <header class="hero-section h-[75vh] md:h-[90vh] flex items-center justify-center text-center text-white px-6 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50/20"></div>
-        <div class="max-w-5xl relative z-10">
+        <div class="max-w-5xl relative z-10 w-full">
             <div class="inline-block bg-white/20 backdrop-blur-xl px-4 py-1.5 rounded-full text-[10px] md:text-sm font-bold tracking-[0.2em] mb-6 md:mb-10 border border-white/30 uppercase">頂級家族之旅</div>
             <h1 class="text-5xl md:text-9xl font-bold mb-4 md:mb-8 tracking-tighter drop-shadow-2xl italic">雲南 · 慢旅</h1>
-            <p class="text-lg md:text-4xl font-light opacity-95 mb-8 md:mb-14 tracking-[0.1em] font-serif italic">洱海之畔，雪山之下</p>
-            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8">
+            <p class="text-lg md:text-4xl font-light opacity-95 mb-8 md:mb-14 tracking-[0.1em] font-serif italic text-white">洱海之畔，雪山之下</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 max-w-xs md:max-w-none mx-auto">
                 <div class="bg-black/20 backdrop-blur-2xl px-6 py-3 md:px-10 md:py-5 rounded-[1.5rem] md:rounded-[2.5rem] border border-white/20 shadow-xl">
                     <p class="text-[9px] md:text-[11px] opacity-70 uppercase font-black mb-1">出發日期</p>
-                    <p class="font-bold text-sm md:text-xl">05/28 — 06/03</p>
+                    <p class="font-bold text-sm md:text-xl text-white">05/28 — 06/03</p>
                 </div>
                 <div class="bg-blue-600/30 backdrop-blur-2xl px-6 py-3 md:px-10 md:py-5 rounded-[1.5rem] md:rounded-[2.5rem] border border-white/30 shadow-xl">
                     <p class="text-[9px] md:text-[11px] opacity-70 uppercase font-black mb-1">飛行體驗</p>
@@ -82,234 +85,234 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 md:px-6 py-16 md:py-28">
+    <main class="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-28">
         
-        <!-- 航班資訊 - 已修復手機跑版問題 -->
-        <section class="mb-24 md:mb-40">
-            <div class="flex items-center gap-3 md:gap-5 mb-10 md:mb-16">
+        <!-- 航班資訊 -->
+        <section class="mb-20 md:mb-40">
+            <div class="flex items-center gap-3 md:gap-5 mb-8 md:mb-16">
                 <div class="h-8 md:h-12 w-2 md:w-3 bg-blue-600 rounded-full"></div>
                 <h2 class="text-2xl md:text-5xl font-bold tracking-tight">航班時刻與服務</h2>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12">
-                <!-- 去程卡片 -->
+                <!-- 去程航班卡片 -->
                 <div class="bg-white p-5 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[4rem] shadow-xl border border-slate-100 relative overflow-hidden">
-                    <div class="flex items-center gap-2 mb-6 md:mb-12 text-blue-600 font-black text-xs md:text-sm uppercase">
+                    <div class="flex items-center gap-2 mb-6 md:mb-12 text-blue-600 font-black text-[10px] md:text-sm uppercase">
                         <i data-lucide="plane-takeoff" class="w-4 h-4"></i> 去程航班
                     </div>
-                    <div class="flex justify-between items-center mb-8 md:mb-10">
+                    <div class="flex justify-between items-center mb-8 md:mb-10 w-full">
                         <div class="text-left shrink-0">
-                            <p class="text-2xl sm:text-3xl md:text-5xl font-black mb-1">15:30</p>
-                            <p class="text-slate-400 font-bold text-[10px] md:text-xs">台北 TPE</p>
+                            <p class="text-2xl sm:text-3xl md:text-5xl font-black mb-1 tracking-tighter text-slate-900">15:30</p>
+                            <p class="text-slate-400 font-bold text-[9px] sm:text-xs">台北 TPE</p>
                         </div>
-                        <div class="flex-1 px-3 sm:px-8 text-center min-w-0">
+                        <div class="flex-grow px-3 sm:px-8 text-center min-w-0">
                             <div class="h-[1px] md:h-[2px] bg-slate-100 relative w-full mb-3 md:mb-4">
                                 <div class="absolute inset-0 bg-blue-500 w-1/2"></div>
-                                <i data-lucide="chevron-right" class="w-3 h-3 md:w-5 md:h-5 text-blue-500 absolute right-0 -top-[5px] md:-top-[9px]"></i>
+                                <i data-lucide="chevron-right" class="w-3 h-3 md:w-6 md:h-6 text-blue-500 absolute right-0 -top-1.5 md:-top-[11px]"></i>
                             </div>
-                            <span class="text-[8px] sm:text-[10px] md:text-[11px] font-bold text-slate-400 italic whitespace-nowrap overflow-hidden">MU5008 | MU9718</span>
+                            <span class="block text-[8px] sm:text-[10px] md:text-xs font-bold text-slate-400 italic whitespace-nowrap overflow-hidden text-ellipsis">MU5008 | MU9718</span>
                         </div>
                         <div class="text-right shrink-0">
-                            <p class="text-2xl sm:text-3xl md:text-5xl font-black mb-1 text-blue-600">11:45</p>
-                            <p class="text-blue-400 font-bold text-[10px] md:text-xs italic">大理 DLU</p>
+                            <p class="text-2xl sm:text-3xl md:text-5xl font-black mb-1 text-blue-600 tracking-tighter">11:45</p>
+                            <p class="text-blue-400 font-bold text-[9px] sm:text-xs italic uppercase">大理 DLU</p>
                         </div>
                     </div>
-                    <div class="bg-amber-50 rounded-2xl p-4 flex items-start gap-3">
+                    <div class="bg-amber-50 rounded-xl md:rounded-2xl p-4 flex items-start gap-3 border border-amber-100/50">
                         <i data-lucide="alert-circle" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5"></i>
                         <div class="text-[10px] md:text-xs text-amber-800 leading-relaxed">
-                            中轉時間 14.5 小時。<span class="font-bold underline">需自行提領行李並重新託運</span>。
+                            中轉時間 14.5 小時。<span class="font-bold underline decoration-amber-300 decoration-2">需自行提領行李並重新託運</span>。
                         </div>
                     </div>
                 </div>
-
-                <!-- 回程卡片 -->
+                <!-- 回程航班卡片 -->
                 <div class="bg-white p-5 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[4rem] shadow-xl border border-slate-100 relative overflow-hidden">
-                    <div class="flex items-center gap-2 mb-6 md:mb-12 text-emerald-600 font-black text-xs md:text-sm uppercase">
+                    <div class="flex items-center gap-2 mb-6 md:mb-12 text-emerald-600 font-black text-[10px] md:text-sm uppercase">
                         <i data-lucide="plane-landing" class="w-4 h-4"></i> 回程航班
                     </div>
-                    <div class="flex justify-between items-center mb-8 md:mb-10">
+                    <div class="flex justify-between items-center mb-8 md:mb-10 w-full text-slate-800">
                         <div class="text-left shrink-0">
-                            <p class="text-2xl sm:text-3xl md:text-5xl font-black mb-1">11:30</p>
-                            <p class="text-slate-400 font-bold text-[10px] md:text-xs">麗江 LJG</p>
+                            <p class="text-2xl sm:text-3xl md:text-5xl font-black mb-1 tracking-tighter text-slate-900">11:30</p>
+                            <p class="text-slate-400 font-bold text-[9px] sm:text-xs">麗江 LJG</p>
                         </div>
-                        <div class="flex-1 px-3 sm:px-8 text-center min-w-0">
+                        <div class="flex-grow px-3 sm:px-8 text-center min-w-0">
                             <div class="h-[1px] md:h-[2px] bg-slate-100 relative w-full mb-3 md:mb-4 text-emerald-600">
-                                <div class="absolute inset-0 bg-emerald-500 w-2/3 text-emerald-600"></div>
-                                <i data-lucide="chevron-right" class="w-3 h-3 md:w-5 md:h-5 text-emerald-500 absolute right-0 -top-[5px] md:-top-[9px]"></i>
+                                <div class="absolute inset-0 bg-emerald-500 w-2/3"></div>
+                                <i data-lucide="chevron-right" class="w-3 h-3 md:w-6 md:h-6 text-emerald-500 absolute right-0 -top-1.5 md:-top-[11px]"></i>
                             </div>
-                            <span class="text-[8px] sm:text-[10px] md:text-[11px] font-bold text-slate-400 italic whitespace-nowrap overflow-hidden">MU6146 | MU5007</span>
+                            <span class="block text-[8px] sm:text-[10px] md:text-xs font-bold text-slate-400 italic whitespace-nowrap overflow-hidden text-ellipsis text-slate-400">MU6146 | MU5007</span>
                         </div>
-                        <div class="text-right shrink-0">
-                            <p class="text-2xl sm:text-3xl md:text-5xl font-black mb-1 text-emerald-600">14:25</p>
-                            <p class="text-emerald-400 font-bold text-[10px] md:text-xs italic">台北 TPE</p>
+                        <div class="text-right shrink-0 text-emerald-600">
+                            <p class="text-2xl sm:text-3xl md:text-5xl font-black mb-1 tracking-tighter">14:25</p>
+                            <p class="text-emerald-400 font-bold text-[9px] sm:text-xs italic uppercase text-emerald-400">台北 TPE</p>
                         </div>
                     </div>
-                    <div class="bg-slate-50 rounded-2xl p-4 flex items-start gap-3 text-slate-600">
+                    <div class="bg-slate-50 rounded-xl md:rounded-2xl p-4 flex items-start gap-3 border border-slate-200">
                         <i data-lucide="clock" class="w-4 h-4 text-slate-400 shrink-0 mt-0.5"></i>
-                        <div class="text-[10px] md:text-xs leading-relaxed">回程中轉 21.5 小時。商務艙旅客可享貴賓室休息。</div>
+                        <div class="text-[10px] md:text-xs text-slate-600 leading-relaxed text-slate-600">中轉 21.5 小時。商務艙旅客可享上海貴賓室休息。</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 行程內容 (大理、麗江) -->
-        <section class="space-y-32 md:space-y-64 mb-24 md:mb-40">
+        <!-- 行程詳細區塊 -->
+        <section class="space-y-24 md:space-y-64 mb-20 md:mb-40">
             <!-- 大理 -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
-                <div class="order-2 lg:order-1">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-24 items-center">
+                <div class="order-2 lg:order-1 text-slate-800">
                     <div class="flex items-center gap-4 mb-6 md:mb-8 text-blue-600">
                         <span class="font-black tracking-[0.2em] text-[10px] md:text-xs uppercase">第一站：大理</span>
-                        <div class="h-[1px] flex-1 bg-blue-100"></div>
+                        <div class="h-[1px] flex-grow bg-blue-100"></div>
                     </div>
-                    <h3 class="text-4xl md:text-6xl font-bold mb-6 md:mb-12 tracking-tight">風花雪月 · 蒼洱間</h3>
-                    <p class="text-slate-500 text-lg md:text-xl leading-relaxed mb-8 md:mb-14 font-light">中午抵達大理，入住面朝洱海的海景房，陽光灑在波浪上的瞬間，就是最治癒的開端。</p>
+                    <h3 class="text-3xl md:text-6xl font-bold mb-6 md:mb-12 tracking-tight text-slate-900">風花雪月 · 蒼洱間</h3>
+                    <p class="text-slate-500 text-base md:text-xl leading-relaxed mb-8 md:mb-14 font-light italic">入住面朝洱海的海景房，陽光灑在波浪上的瞬間，就是最治癒的開端。</p>
                     <div class="grid grid-cols-2 gap-4 md:gap-8">
-                        <div class="img-card h-40 md:h-72 border-4 md:border-8 border-white">
-                            <img src="https://ak-d.tripcdn.com/images/1mi1s12000ee7l06h4DFE_W_640_0_R5_Q80.jpg?proc=source/trip" alt="大理風景">
+                        <div class="img-card h-36 sm:h-48 md:h-72 border-4 md:border-8 border-white shadow-lg text-slate-900">
+                            <img src="https://ak-d.tripcdn.com/images/1mi1s12000ee7l06h4DFE_W_640_0_R5_Q80.jpg?proc=source/trip" alt="大理美景1">
                         </div>
-                        <div class="img-card h-40 md:h-72 border-4 md:border-8 border-white">
-                            <img src="https://img.caixin.com/2022-01-28/164335467167011_840_560.jpg" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=90'" alt="大理美景">
+                        <div class="img-card h-36 sm:h-48 md:h-72 border-4 md:border-8 border-white shadow-lg text-slate-900">
+                            <img src="https://img.caixin.com/2022-01-28/164335467167011_840_560.jpg" onerror="this.src='https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=90'" alt="大理美景2">
                         </div>
                     </div>
                 </div>
                 <div class="order-1 lg:order-2">
-                    <img src="https://ak-d.tripcdn.com/images/1mc1p12000gzb7rfq006C_W_1280_853_R5.webp?proc=watermark/image_trip1,l_ne,x_16,y_16,w_67,h_16;digimark/t_image,logo_tripbinary;ignoredefaultwm,1A8F" alt="大理住宿" class="itinerary-image">
+                    <img src="https://ak-d.tripcdn.com/images/1mc1p12000gzb7rfq006C_W_1280_853_R5.webp?proc=watermark/image_trip1,l_ne,x_16,y_16,w_67,h_16;digimark/t_image,logo_tripbinary;ignoredefaultwm,1A8F" alt="大理飯店" class="itinerary-image">
                 </div>
             </div>
 
             <!-- 麗江 -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-24 items-center">
                 <div class="order-1">
                     <img src="https://ak-d.tripcdn.com/images/1mc0912000obi9z5h6553_W_1280_853_R5.webp" alt="麗江飯店" class="itinerary-image">
                 </div>
-                <div class="order-2">
+                <div class="order-2 text-slate-800">
                     <div class="flex items-center gap-4 mb-6 md:mb-8 text-slate-800">
                         <span class="font-black tracking-[0.2em] text-[10px] md:text-xs uppercase">第二站：麗江</span>
-                        <div class="h-[1px] flex-1 bg-slate-200"></div>
+                        <div class="h-[1px] flex-grow bg-slate-200"></div>
                     </div>
-                    <h3 class="text-4xl md:text-6xl font-bold mb-6 md:mb-12 tracking-tight">麗江：古城繁華</h3>
-                    <p class="text-slate-500 text-lg md:text-xl leading-relaxed mb-8 md:mb-14 font-light">漫步在麗江的青石板路上，每一條巷弄都藏著千年的傳說，住在能看見雪山的房間。</p>
-                    <div class="grid grid-cols-2 gap-4 md:gap-8">
-                        <div class="img-card h-40 md:h-64 border-4 border-white shadow-lg">
-                            <img src="https://www.ourchinastory.com/images/content/travel-leisure/2022/10/%E9%9B%B2%E5%8D%97%E9%BA%97%E6%B1%9F%E5%8F%A4%E5%9F%8E01_x1.jpg" alt="麗江古城">
+                    <h3 class="text-3xl md:text-6xl font-bold mb-6 md:mb-12 tracking-tight text-slate-900">麗江：古城與雪山</h3>
+                    <p class="text-slate-500 text-base md:text-xl leading-relaxed mb-8 md:mb-14 font-light">探訪藏著千年傳說的巷弄，清晨推開窗，便是聖潔的玉龍雪山。</p>
+                    <div class="grid grid-cols-2 gap-4 md:gap-8 text-slate-800">
+                        <div class="img-card h-36 sm:h-48 md:h-64 border-4 border-white shadow-xl text-slate-800">
+                            <img src="https://www.ourchinastory.com/images/content/travel-leisure/2022/10/%E9%9B%B2%E5%8D%97%E9%BA%97%E6%B1%9F%E5%8F%A4%E5%9F%8E01_x1.jpg" alt="麗江古城1">
                         </div>
-                        <div class="img-card h-40 md:h-64 border-4 border-white shadow-lg">
-                            <img src="https://www.ourchinastory.com/images/content/travel-leisure/2022/10/%E9%9B%B2%E5%8D%97%E9%BA%97%E6%B1%9F%E5%8F%A4%E5%9F%8E-02_x1.jpg" alt="麗江雪山">
+                        <div class="img-card h-36 sm:h-48 md:h-64 border-4 border-white shadow-xl text-slate-800">
+                            <img src="https://www.ourchinastory.com/images/content/travel-leisure/2022/10/%E9%9B%B2%E5%8D%97%E9%BA%97%E6%B1%9F%E5%8F%A4%E5%9F%8E-02_x1.jpg" alt="麗江古城2">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 日照金山特寫 -->
-            <section class="space-y-10 md:space-y-16 text-center">
-                <div class="h-1 w-16 md:w-20 bg-orange-500 mx-auto mb-6 md:mb-8"></div>
-                <h3 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight italic">神聖之光</h3>
-                <p class="text-base md:text-xl text-slate-500 font-light px-4 mb-8">清晨第一縷陽光將雪山巔染成金黃色。</p>
-                <div class="relative group">
-                    <img src="https://ak-d.tripcdn.com/images/0355212000m6ajzgj58B0_Z_1000_0.jpg?proc=resize/m_z,w_1000;crop/m_c,w_1000,h_1000,x_0,y_0,DD72" alt="日照金山" class="w-full h-[400px] md:h-[700px] object-cover rounded-[2rem] md:rounded-[4rem] shadow-3xl border-4 md:border-[15px] border-white">
-                </div>
-            </section>
-
-            <!-- 民族旅拍 -->
+            <!-- 旅拍區塊 -->
             <section class="space-y-10 md:space-y-16">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-6 px-2">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6 px-2 text-slate-800">
                     <div class="text-center md:text-left">
-                        <span class="text-orange-600 font-black tracking-[0.3em] text-[10px] md:text-xs uppercase mb-2 block">文化體驗</span>
-                        <h3 class="text-4xl md:text-6xl font-bold tracking-tight italic">麗江民族旅拍</h3>
+                        <span class="text-orange-600 font-black tracking-[0.3em] text-[10px] md:text-xs uppercase mb-2 block">藝術文化體驗</span>
+                        <h3 class="text-3xl md:text-6xl font-bold tracking-tight italic text-slate-900">麗江民族旅拍</h3>
                     </div>
-                    <div class="bg-orange-50 px-8 py-4 rounded-3xl border border-orange-100 text-center">
-                        <p class="text-[10px] text-orange-400 font-black mb-1">預估花費</p>
-                        <p class="text-3xl font-black text-orange-600 font-mono">$1,835</p>
+                    <div class="bg-orange-50 px-6 py-4 rounded-2xl md:rounded-3xl border border-orange-100 text-center shadow-sm">
+                        <p class="text-[9px] md:text-[10px] text-orange-400 font-black uppercase mb-1">預估花費</p>
+                        <p class="text-2xl md:text-4xl font-black text-orange-600 font-mono">$1,835 <span class="text-xs">NTD</span></p>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
-                    <div class="img-card h-[450px] md:h-[650px] border-8 border-white shadow-2xl bg-white">
-                        <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/owAJwhGsLAp3Nza7A72eAEJBwZfEI8AegSZ9xI~tplv-dy-aweme-images:q75.webp?biz_tag=aweme_images&from=327834062&lk3s=138a59ce&s=PackSourceEnum_SEARCH&sc=image&se=false&x-expires=1776088800&x-signature=RWGR%2BP9pjxPQNADvVeaLfNDV8Cg%3D" alt="旅拍01">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 text-slate-800">
+                    <div class="img-card h-[500px] md:h-[650px] border-8 md:border-[12px] border-white shadow-2xl bg-white text-slate-800">
+                        <img src="https://p3-pc-sign.douyinpic.com/tos-cn-i-0813c000-ce/owAJwhGsLAp3Nza7A72eAEJBwZfEI8AegSZ9xI~tplv-dy-aweme-images:q75.webp?biz_tag=aweme_images&from=327834062&lk3s=138a59ce&s=PackSourceEnum_SEARCH&sc=image&se=false&x-expires=1776088800&x-signature=RWGR%2BP9pjxPQNADvVeaLfNDV8Cg%3D" alt="旅拍樣照">
                     </div>
-                    <div class="img-card h-[450px] md:h-[650px] border-8 border-white shadow-2xl bg-white hidden md:block">
+                    <div class="img-card h-[500px] md:h-[650px] border-8 md:border-[12px] border-white shadow-2xl bg-white hidden md:block">
                         <img src="https://travel-alien.com/wp-content/uploads/2024/01/lijiang-photo-tour_05.jpg" alt="旅拍02">
                     </div>
-                    <div class="img-card h-[450px] md:h-[650px] border-8 border-white shadow-2xl bg-white hidden md:block">
+                    <div class="img-card h-[500px] md:h-[650px] border-8 md:border-[12px] border-white shadow-2xl bg-white hidden md:block text-slate-800">
                         <img src="https://travel-alien.com/wp-content/uploads/2024/01/lijiang-photo-tour_06.jpg" alt="旅拍03">
                     </div>
                 </div>
-                <div class="bg-slate-900 rounded-[2rem] p-6 md:p-10 text-white flex justify-center items-center gap-8 md:gap-14">
-                    <div class="flex flex-col items-center">
-                        <i data-lucide="scissors" class="w-5 h-5 mb-2"></i>
-                        <span class="text-[10px] md:text-sm font-bold">換裝妝造</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <i data-lucide="camera" class="w-5 h-5 mb-2"></i>
-                        <span class="text-[10px] md:text-sm font-bold">專業拍攝</span>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <i data-lucide="sparkle" class="w-5 h-5 mb-2"></i>
-                        <span class="text-[10px] md:text-sm font-bold">精緻修圖</span>
-                    </div>
+                <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white flex justify-around items-center text-center">
+                    <div><i data-lucide="scissors" class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2"></i><span class="text-[10px] md:text-sm font-bold opacity-80">換裝妝造</span></div>
+                    <div><i data-lucide="camera" class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2"></i><span class="text-[10px] md:text-sm font-bold opacity-80">專業拍攝</span></div>
+                    <div><i data-lucide="sparkle" class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2"></i><span class="text-[10px] md:text-sm font-bold opacity-80">精緻修圖</span></div>
                 </div>
             </section>
 
-            <!-- 雲南美食 -->
-            <section class="space-y-10 md:space-y-16">
+            <!-- 雲南美食：補回全部 9 個模塊 -->
+            <section class="space-y-10 md:space-y-16 text-slate-800">
                 <div class="text-center">
                     <div class="h-1 w-16 bg-emerald-500 mx-auto mb-6"></div>
-                    <h3 class="text-4xl md:text-6xl font-bold tracking-tight italic mb-4">舌尖上的雲南</h3>
-                    <p class="text-base md:text-xl text-slate-500 font-light px-4">味蕾的驚喜巡禮。</p>
+                    <h3 class="text-3xl md:text-6xl font-bold tracking-tight italic text-slate-900">舌尖上的雲南</h3>
+                    <p class="text-base md:text-xl text-slate-500 font-light mt-4">為家人準備的 9 道必吃地道風味。</p>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-10">
-                    <div class="food-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100">
-                        <div class="h-32 md:h-64 overflow-hidden"><img src="https://ak-d.tripcdn.com/images/1mi1z12000gp3whkx6648_W_640_0_R5_Q80.jpg?proc=source/trip" class="w-full h-full object-cover"></div>
-                        <div class="p-4 md:p-8"><h4 class="text-base md:text-2xl font-bold">大理石板燒</h4></div>
+                    <!-- 1. 石板燒 -->
+                    <div class="food-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="aspect-square md:aspect-auto md:h-64 overflow-hidden"><img src="https://ak-d.tripcdn.com/images/1mi1z12000gp3whkx6648_W_640_0_R5_Q80.jpg?proc=source/trip" class="w-full h-full object-cover"></div>
+                        <div class="p-4 md:p-8"><h4 class="text-sm md:text-2xl font-bold">大理石板燒</h4></div>
                     </div>
-                    <div class="food-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100">
-                        <div class="h-32 md:h-64 overflow-hidden"><img src="https://ak-d.tripcdn.com/images/1mi3g12000ipglnl9652E_W_640_0_R5_Q80.jpg?proc=source/trip" class="w-full h-full object-cover"></div>
-                        <div class="p-4 md:p-8"><h4 class="text-base md:text-2xl font-bold">野生菌火鍋</h4></div>
+                    <!-- 2. 野生菌火鍋 -->
+                    <div class="food-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="aspect-square md:aspect-auto md:h-64 overflow-hidden"><img src="https://ak-d.tripcdn.com/images/1mi3g12000ipglnl9652E_W_640_0_R5_Q80.jpg?proc=source/trip" class="w-full h-full object-cover"></div>
+                        <div class="p-4 md:p-8"><h4 class="text-sm md:text-2xl font-bold">野生菌火鍋</h4></div>
                     </div>
-                    <div class="food-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100">
-                        <div class="h-32 md:h-64 overflow-hidden">
+                    <!-- 3. 水性楊花 -->
+                    <div class="food-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="aspect-square md:aspect-auto md:h-64 overflow-hidden"><img src="https://i2.kknews.cc/oob1ONQ3ZeIG97BqrwtrROUSdaJ_A13slJbjioI/0.jpg" class="w-full h-full object-cover"></div>
+                        <div class="p-4 md:p-8"><h4 class="text-sm md:text-2xl font-bold">家常熱炒 (水性楊花)</h4></div>
+                    </div>
+                    <!-- 4. 過橋米線 -->
+                    <div class="food-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="aspect-square md:aspect-auto md:h-64 overflow-hidden">
                             <img src="https://www.ourchinastory.com/images/content/delicious-trend/2021/11/%E7%99%BE%E5%91%B3%E4%B8%AD%E5%9C%8B-%E9%9B%B2%E5%8D%97%E7%B1%B3%E7%B7%9A2_x1.jpg" 
-                                 onerror="this.src='https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=800&q=80'"
-                                 class="w-full h-full object-cover" alt="過橋米線">
+                                 onerror="this.src='https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-4 md:p-8"><h4 class="text-base md:text-2xl font-bold">過橋米線</h4></div>
+                        <div class="p-4 md:p-8"><h4 class="text-sm md:text-2xl font-bold">經典過橋米線</h4></div>
                     </div>
-                    <div class="food-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100">
-                        <div class="h-32 md:h-64 overflow-hidden"><img src="https://xqimg.imedao.com/187282f89d21368e3fd4f98b.png!800.jpg" class="w-full h-full object-cover"></div>
-                        <div class="p-4 md:p-8"><h4 class="text-base md:text-2xl font-bold">手工鮮花餅</h4></div>
+                    <!-- 5. 鮮花餅 -->
+                    <div class="food-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="aspect-square md:aspect-auto md:h-64 overflow-hidden"><img src="https://xqimg.imedao.com/187282f89d21368e3fd4f98b.png!800.jpg" class="w-full h-full object-cover"></div>
+                        <div class="p-4 md:p-8"><h4 class="text-sm md:text-2xl font-bold">手工鮮花餅</h4></div>
                     </div>
-                    <div class="food-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100">
-                        <div class="h-32 md:h-64 overflow-hidden"><img src="https://scontent.fkhh1-1.fna.fbcdn.net/v/t39.30808-6/498644702_10078030945586378_5077742184261899190_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e06c5d&_nc_ohc=3wxkVmfE7cAQ7kNvwEjoCWh&_nc_oc=AdlrWfD7lSSneyqFmAzj-8qaKlRghUzjVWlat8GpXve8RQdgepnCWiLTMvWAqZTjaPA&_nc_zt=23&_nc_ht=scontent.fkhh1-1.fna&_nc_gid=z2qEFMPvx8hSGq1wbqhMKg&_nc_ss=8&oh=00_AfzRhB3hRwCbJ0qJIPGhUPcqXrP2AMqW_tYQ6hjtPaeLaQ&oe=69BDA34A" class="w-full h-full object-cover"></div>
-                        <div class="p-4 md:p-8"><h4 class="text-base md:text-2xl font-bold">烤乳扇</h4></div>
+                    <!-- 6. 冰粉 -->
+                    <div class="food-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="aspect-square md:aspect-auto md:h-64 overflow-hidden"><img src="https://www.ourchinastory.com/images/content/delicious-trend/2021/06/%E5%86%B0%E7%B2%8902_x1.jpg" class="w-full h-full object-cover"></div>
+                        <div class="p-4 md:p-8"><h4 class="text-sm md:text-2xl font-bold">沁涼冰粉</h4></div>
                     </div>
-                    <div class="food-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100">
-                        <div class="h-32 md:h-64 overflow-hidden"><img src="https://hongcheng-doufu.com/wp-content/uploads/2024/03/51701d16e0d7acaa.jpg" class="w-full h-full object-cover"></div>
-                        <div class="p-4 md:p-8"><h4 class="text-base md:text-2xl font-bold">包漿豆腐</h4></div>
+                    <!-- 7. 烤乳扇 -->
+                    <div class="food-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="aspect-square md:aspect-auto md:h-64 overflow-hidden"><img src="https://scontent.fkhh1-1.fna.fbcdn.net/v/t39.30808-6/498644702_10078030945586378_5077742184261899190_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e06c5d&_nc_ohc=3wxkVmfE7cAQ7kNvwEjoCWh&_nc_oc=AdlrWfD7lSSneyqFmAzj-8qaKlRghUzjVWlat8GpXve8RQdgepnCWiLTMvWAqZTjaPA&_nc_zt=23&_nc_ht=scontent.fkhh1-1.fna&_nc_gid=z2qEFMPvx8hSGq1wbqhMKg&_nc_ss=8&oh=00_AfzRhB3hRwCbJ0qJIPGhUPcqXrP2AMqW_tYQ6hjtPaeLaQ&oe=69BDA34A" class="w-full h-full object-cover"></div>
+                        <div class="p-4 md:p-8"><h4 class="text-sm md:text-2xl font-bold">大理烤乳扇</h4></div>
+                    </div>
+                    <!-- 8. 大理砂鍋魚 -->
+                    <div class="food-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="aspect-square md:aspect-auto md:h-64 overflow-hidden"><img src="https://gbpxw.oss-cn-beijing.aliyuncs.com/image/2019/05/10/1557455555772127.jpg" class="w-full h-full object-cover"></div>
+                        <div class="p-4 md:p-8"><h4 class="text-sm md:text-2xl font-bold">大理砂鍋魚</h4></div>
+                    </div>
+                    <!-- 9. 包漿豆腐 -->
+                    <div class="food-card bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                        <div class="aspect-square md:aspect-auto md:h-64 overflow-hidden"><img src="https://hongcheng-doufu.com/wp-content/uploads/2024/03/51701d16e0d7acaa.jpg" class="w-full h-full object-cover"></div>
+                        <div class="p-4 md:p-8"><h4 class="text-sm md:text-2xl font-bold">爆漿包漿豆腐</h4></div>
                     </div>
                 </div>
             </section>
         </section>
 
         <!-- 花費預算 -->
-        <section class="mb-24 md:mb-40 px-2">
-            <div class="bg-slate-900 rounded-[2.5rem] md:rounded-[5rem] p-8 md:p-20 text-white shadow-2xl relative overflow-hidden text-white">
+        <section class="mb-20 md:mb-40">
+            <div class="bg-slate-900 rounded-[2.5rem] md:rounded-[5rem] p-8 md:p-20 text-white shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-full md:w-1/3 h-full bg-gradient-to-l from-blue-600/10 to-transparent"></div>
-                <h2 class="text-3xl md:text-5xl font-bold mb-10 md:mb-16 tracking-tight flex items-center gap-4 text-white">
-                    <span class="h-8 md:h-12 w-1.5 md:w-2 bg-blue-500 rounded-full"></span> 旅程花費明細
+                <h2 class="text-2xl md:text-5xl font-bold mb-10 md:mb-16 tracking-tight flex items-center gap-4">
+                    <span class="h-8 md:h-12 w-1.5 md:w-2 bg-blue-500 rounded-full"></span> 旅程預算明細
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 relative z-10 text-white text-white">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 relative z-10">
                     <div class="space-y-6">
-                        <p class="text-blue-400 font-bold uppercase tracking-widest text-[10px]">機票交通</p>
-                        <div class="flex justify-between border-b border-white/10 pb-2"><span>機票 (商務)</span><span class="font-mono">$21,000</span></div>
-                        <div class="flex justify-between border-b border-white/10 pb-2"><span>包車 (2天)</span><span class="font-mono">$598</span></div>
+                        <p class="text-blue-400 font-bold uppercase tracking-widest text-[10px] md:text-xs">機票交通</p>
+                        <div class="flex justify-between border-b border-white/10 pb-2 text-sm md:text-base"><span>來回機票 (商務)</span><span class="font-mono text-white">$21,000</span></div>
+                        <div class="flex justify-between border-b border-white/10 pb-2 text-sm md:text-base"><span>大理包車 (2天)</span><span class="font-mono text-white">$598</span></div>
                     </div>
                     <div class="space-y-6">
-                        <p class="text-emerald-400 font-bold uppercase tracking-widest text-[10px]">住宿行程</p>
-                        <div class="flex justify-between border-b border-white/10 pb-2"><span>住宿總計</span><span class="font-mono">$2,500</span></div>
-                        <div class="flex justify-between border-b border-white/10 pb-2"><span>民族旅拍</span><span class="font-mono">$1,835</span></div>
+                        <p class="text-emerald-400 font-bold uppercase tracking-widest text-[10px] md:text-xs">住宿行程</p>
+                        <div class="flex justify-between border-b border-white/10 pb-2 text-sm md:text-base"><span>住宿總計 (5天)</span><span class="font-mono text-white">$2,500</span></div>
+                        <div class="flex justify-between border-b border-white/10 pb-2 text-sm md:text-base"><span>民族旅拍</span><span class="font-mono text-white">$1,835</span></div>
                     </div>
                     <div class="flex flex-col justify-center">
-                        <div class="bg-white/5 p-6 rounded-3xl border border-white/10 backdrop-blur-md">
-                            <p class="text-blue-500 text-[9px] font-black uppercase tracking-[0.2em] mb-1">每人預算總計</p>
-                            <p class="text-4xl md:text-5xl font-black italic">$31,011</p>
+                        <div class="bg-white/5 p-6 md:p-8 rounded-3xl border border-white/10 backdrop-blur-md">
+                            <p class="text-blue-500 text-[10px] font-black uppercase tracking-[0.2em] mb-2">每人總計估算</p>
+                            <p class="text-4xl md:text-6xl font-black italic tracking-tighter text-white font-serif">$31,011 <span class="text-xs md:text-sm font-normal opacity-50">TWD</span></p>
                         </div>
                     </div>
                 </div>
@@ -319,25 +322,25 @@
         <!-- 貼心提醒 -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-14 text-slate-800">
             <div class="bg-white p-10 md:p-16 rounded-[2.5rem] md:rounded-[4.5rem] shadow-lg border border-slate-100 text-center">
-                <div class="mb-6 md:mb-10 p-4 bg-blue-50 text-blue-600 rounded-2xl inline-block"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
-                <h4 class="text-2xl md:text-3xl font-bold mb-4">高反保健</h4>
-                <p class="text-slate-400 text-sm md:text-base italic">備好氧氣瓶，動作放慢，多喝溫水。</p>
+                <div class="mb-6 md:mb-10 p-5 bg-blue-50 text-blue-600 rounded-3xl inline-block"><i data-lucide="shield-check" class="w-10 h-10"></i></div>
+                <h4 class="text-xl md:text-3xl font-bold mb-4">高反保健</h4>
+                <p class="text-slate-400 text-sm md:text-base italic">備好氧氣瓶，動作放慢適應海拔。</p>
             </div>
             <div class="bg-white p-10 md:p-16 rounded-[2.5rem] md:rounded-[4.5rem] shadow-lg border border-slate-100 text-center">
-                <div class="mb-6 md:mb-10 p-4 bg-orange-50 text-orange-600 rounded-2xl inline-block"><i data-lucide="zap" class="w-8 h-8"></i></div>
-                <h4 class="text-2xl md:text-3xl font-bold mb-4">智慧支付</h4>
-                <p class="text-slate-400 text-sm md:text-base italic">建議優先使用支付寶或微信支付。</p>
+                <div class="mb-6 md:mb-10 p-5 bg-orange-50 text-orange-600 rounded-3xl inline-block"><i data-lucide="zap" class="w-10 h-10"></i></div>
+                <h4 class="text-xl md:text-3xl font-bold mb-4 text-slate-900">智慧支付</h4>
+                <p class="text-slate-400 text-sm md:text-base italic">建議優先準備支付寶或微信。</p>
             </div>
             <div class="bg-white p-10 md:p-16 rounded-[2.5rem] md:rounded-[4.5rem] shadow-lg border border-slate-100 text-center">
-                <div class="mb-6 md:mb-10 p-4 bg-slate-50 text-slate-800 rounded-2xl inline-block"><i data-lucide="luggage" class="w-8 h-8"></i></div>
-                <h4 class="text-2xl md:text-3xl font-bold mb-4 text-slate-900">行李叮嚀</h4>
-                <p class="text-slate-400 text-sm md:text-base italic">隨身帶好台胞證跟護照。</p>
+                <div class="mb-6 md:mb-10 p-5 bg-slate-50 text-slate-800 rounded-3xl inline-block text-slate-800"><i data-lucide="luggage" class="w-10 h-10"></i></div>
+                <h4 class="text-xl md:text-3xl font-bold mb-4 text-slate-900">行李叮嚀</h4>
+                <p class="text-slate-400 text-sm md:text-base italic">重要物品隨身帶好，證件務必帶齊。</p>
             </div>
         </section>
     </main>
 
     <footer class="py-20 md:py-32 text-center border-t border-slate-100 bg-white px-6 text-slate-900">
-        <p class="text-2xl md:text-4xl font-black tracking-[0.5em] text-slate-900 mb-4 uppercase italic">雲南之旅</p>
+        <p class="text-3xl md:text-5xl font-black tracking-[0.5em] text-slate-900 mb-6 uppercase italic text-slate-900">雲南之旅</p>
         <p class="text-xs md:text-sm font-medium italic text-slate-500">「最好的旅行，是與最愛的人在一起。」</p>
     </footer>
 
